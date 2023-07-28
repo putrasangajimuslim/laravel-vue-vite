@@ -99,7 +99,12 @@ export default {
         },
 
         searchItems() {
-            axios.get(`/api/search_kontak?keyword=${this.keyword}`)
+            axios.get(`/api/search_kontak?keyword=${this.keyword}`, {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                    'userid': this.userIdLogin,
+                },
+            })
                 .then(response => {
                     this.items = response.data;
                 })

@@ -68,13 +68,18 @@ class KontakController extends Controller
 
     public function search(Request $request)
     {
+        $userId = $request->header('userid');
         $keyword = $request->input('keyword');
 
-        $items = Kontak::where('name', 'LIKE', "%$keyword%")
-            ->orWhere('email', 'LIKE', "%$keyword%")
-            ->orWhere('notelp', 'LIKE', "%$keyword%")
+        // Perform the search based on the user ID and keyword
+        $kontaks = Kontak::where('teman_id', $userId)
+            ->where(function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', "%$keyword%")
+                    ->orWhere('email', 'LIKE', "%$keyword%")
+                    ->orWhere('notelp', 'LIKE', "%$keyword%");
+            })
             ->get();
 
-        return response()->json($items);
+        return response()->json($kontaks);
     }
 }
