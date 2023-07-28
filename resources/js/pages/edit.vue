@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit">Tambah</button>
+                    <button type="submit">Update</button>
                     <button @click="deleteItem" style="background-color: red; margin-left: 10px;">Delete</button>
                 </div>
             </form>
