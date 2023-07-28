@@ -11,7 +11,7 @@
             <a class="logout-btn" @click="logout" href="#">Logout</a>
         </div>
 
-        <h1>Form Tambah Edit Kontak</h1>
+        <h1>Form Edit Kontak</h1>
         <div class="container">
             <form @submit.prevent="saveChanges">
                 <div class="form-group">
